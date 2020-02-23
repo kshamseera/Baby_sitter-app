@@ -5,3 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+languages = ['english', 'french', 'german']
+amount = ['200' ,'300', '400']
+    user1=User.create(email: 'test-user1@event.com', password: 'password')
+    user1.build_baby_sitter_registrations( 
+    country: Faker::Address.country,
+    city: 'Melbourne',
+    description: Faker::GreekPhilosophers.quote,
+    language: languages.sample(2),
+    amount: amount.sample(6)
+    )
+    user1.save

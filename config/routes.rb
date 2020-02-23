@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
  
+  get 'listings/index'
   devise_for :users
   resources :welcome
   root to: "welcome#index"

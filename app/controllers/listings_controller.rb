@@ -1,6 +1,7 @@
-class WelcomeController < ApplicationController
+class ListingsController < ApplicationController
   def index
     if params[:city]
+    
       @babysitters= BabySitterRegistration.where(city: params[:city])
      else
       @babysitters=BabySitterRegistration.all

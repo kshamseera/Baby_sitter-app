@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_20_235145) do
+ActiveRecord::Schema.define(version: 2020_02_23_125148) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "baby_sitter_registrations", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "country"
+    t.string "city"
+    t.string "available_date"
+    t.string "language"
+    t.string "gender"
+    t.string "description"
+    t.string "amount"
+    t.string "upload_cv"
+    t.string "upload_image"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_baby_sitter_registrations_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +39,13 @@ ActiveRecord::Schema.define(version: 2020_02_20_235145) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "mobile"
+    t.string "date_of_birth"
+    t.boolean "is_baby_sitter"
+    t.string "user_name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "baby_sitter_registrations", "users"
 end
