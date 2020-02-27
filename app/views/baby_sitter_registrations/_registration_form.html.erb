@@ -1,0 +1,73 @@
+<%= form_with(model: baby_sitter_registration, local: true) do |form| %>
+  <% if baby_sitter_registration.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(baby_sitter_registration.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+        <% baby_sitter_registration.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class ="container">
+  <div class="field">
+    <%= form.label :First_name %>
+    <%= form.text_field :first_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Last_name %>
+    <%= form.text_field :last_name %>
+  </div>
+
+  <div class="field">
+   
+    <%= form.label :Gender %>
+    <%= form.label :Male %>
+    <%= form.radio_button :Gender, 'Male' %>
+     <%= form.label :Female %>
+    <%= form.radio_button :Gender, 'Female' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Country %>
+    <%= form.text_field :country %>
+  </div>
+
+  <div class="field">
+    <%= form.label :City %>
+    <%= form.text_field :city %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Preferred_Languages %>
+    <%= form.text_area :language %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :Description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Amount_per_hour %>
+    <%= form.text_field :amount %>
+  </div>
+
+ <div class="field">
+    <%= form.label :Upload_CV %>
+    <%= form.file_field :upload_cv %>
+  </div>
+
+ <div class="field">
+    <%= form.label :Upload_Photo %>
+    <%= form.file_field :upload_image  %>
+  </div>
+
+ 
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+</div>

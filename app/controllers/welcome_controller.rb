@@ -1,9 +1,9 @@
 class WelcomeController < ApplicationController
   def index
     if params[:city]
-      @babysitters= BabySitterRegistration.where(city: params[:city])
+      @babysitters = BabySitterRegistration.where(city: params[:city])
      else
-      @babysitters=BabySitterRegistration.all
+      @babysitters = BabySitterRegistration.all
     end
   end
 end
