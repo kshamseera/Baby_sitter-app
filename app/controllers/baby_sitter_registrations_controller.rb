@@ -1,8 +1,8 @@
 class BabySitterRegistrationsController < ApplicationController
-    before_action :authenticate_user!
+    before_action :authenticate_user!, only: [:show]
 
     def new
-        @baby_sitter = BabySitterRegistration .new
+        @baby_sitter = BabySitterRegistration.new
     end
 
     def create
@@ -16,7 +16,7 @@ class BabySitterRegistrationsController < ApplicationController
         end
     end
     def show
-        @baby_sitter= current_user.baby_sitter_registration
+        @baby_sitter= BabySitterRegistration.find(params[:id])
     end
     private
 

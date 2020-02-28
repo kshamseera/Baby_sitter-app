@@ -1,1 +1,11 @@
-<h1><div class ="container">Welcome <%= @baby_sitter.first_name + ' ' + @baby_sitter.last_name %></h1></div>
+
+<div class="container">
+<h1><%= @baby_sitter.first_name + ' ' + @baby_sitter.last_name %></h1> <br>
+
+<%= @baby_sitter.country%><br>
+<%= @baby_sitter.city %><br>
+<%= @baby_sitter.language %><br>
+<%= @baby_sitter.description %><br>
+<%= @baby_sitter.amount %><br><br>
+<%= button_to "Continue" , new_booking_detail_path, method: :get%>
+</div>

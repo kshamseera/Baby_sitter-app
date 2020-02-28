@@ -10,10 +10,10 @@ languages = ['english', 'french', 'german']
 amount = ['200' ,'300', '400']
 gender =['male','female']
     user1=User.create(email: 'test-user1@event.com', password: 'password')
-    user1.build_baby_sitter_registrations( 
+    user1.build_baby_sitter_registration( 
     country: Faker::Address.country,
     city: 'Melbourne',
-    gende: 'gender'.sample(1),
+    gender: gender.sample(1),
     description: Faker::GreekPhilosophers.quote,
     language: languages.sample(2),
     amount: amount.sample(6)

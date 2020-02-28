@@ -1,2 +1,18 @@
-<h1>Welcome#index</h1>
 
+<%= form_tag  do %>
+ <%= text_field_tag :city ,"",placeholder: "City" %>
+ <%= submit_tag "Search" %>
+<h2>Meet and Book Our baby sitters</h2>
+<% end %>
+<div >
+<%= params[:city] %> 
+<% @babysitters.each do |babysitter| %>
+<div class ="card">
+<p class= "preview"><%= image_tag (babysitter.upload_image) if babysitter.upload_image.attached? %></p>
+<h2> <%= babysitter.first_name + ' ' + babysitter.last_name %></h2>
+<p><%= babysitter.description%></p>
+<%= button_to "View more" , baby_sitter_path(babysitter) , method: :get %>
+
+
+</div>
+<% end %>

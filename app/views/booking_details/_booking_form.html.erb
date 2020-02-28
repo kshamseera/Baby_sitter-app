@@ -1,0 +1,57 @@
+<%= form_with(model: booking_detail, local: true) do |form| %>
+  <% if booking_detail.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(booking_detail.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+        <% booking_detail.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class= "container">
+   <div><h2>Booking For Baby Sitter</h2><div><br>
+
+    <div class="field">
+    <%= form.label :Name_of_child %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Age_of_child %>
+    <%= form.text_field :age %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Number_of_children %>
+    <%= form.text_field :number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Country%>
+    <%= form.text_field :country %>
+  </div>
+
+  <div class="field">
+    <%= form.label :City %>
+    <%= form.text_field :city %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Choose_Date_For_Booking %>
+    <%= form.date_field :date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Message %>
+    <%= form.text_field :message %>
+  </div>
+
+  <div class="field">
+    <%= form.submit "Book Now" %>
+  </div>
+
+  </div>
+  <% end %>

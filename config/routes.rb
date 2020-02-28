@@ -1,12 +1,19 @@
 Rails.application.routes.draw do
- 
+  root to: "welcome#index"
+  
   get 'listings/index'
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
+  resources :booking_details
+  resources :listings
   resources :baby_sitter_registrations
-  resources :welcome
-  root to: "welcome#index"
+
+  get '/baby_sitters/:id', to: 'baby_sitter_registrations#show', as: :baby_sitter
+  post '/welcome', to: 'welcome#index'
+  get '/welcome', to: 'welcome#index'
+  # resources :welcome
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -1,10 +1,10 @@
 class ListingsController < ApplicationController
   def index
-  #   if params[:city]
+    if params[:city]
     
-  #     @babysitters= BabySitterRegistration.where(city: params[:city])
-  #    else
-  #     @babysitters=BabySitterRegistration.all
-  #   end
-  # end
+      @babysitters= BabySitterRegistration.where(city: params[:city])
+     else
+      @babysitters=BabySitterRegistration.all
+    end
+  end
 end
