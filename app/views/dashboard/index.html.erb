@@ -6,25 +6,28 @@
   <div>
   <p><strong>Country:</strong> <%= babysitter.country%></p>
   <p><strong>Prefered City:</strong> <%= babysitter.city %></p>
+   <p><strong>Gender:</strong> <%= babysitter.gender %></p>
   <p><strong>Languages:</strong> <%= babysitter.language %></p>
   <p><strong>Available_Date:</strong> <%= babysitter.available_date %></p>
   <p><strong>About myself:</strong> <%= babysitter.description %></p>
   <p><strong>Amount/hr:</strong> <%= babysitter.amount %></p><br>
     <% end %>
-  <%= button_to "Edit Profile" ,edit_baby_sitter_registration_path(@baby_sitter_details,@booking_detail) ,:method=> :get%>
+  <%= button_to "Edit Profile",edit_baby_sitter_registration_path(current_user.baby_sitter_registration) ,:method=> :get%>
   <%# <%= link_to "Delete", destroy_baby_sitter_registration_path(@booking_detail,@baby_sitter_details, :method =>:delete )%> 
-    <%else  %>
+  <%else  %>
   <div class ="container">
-  <h2>My Booking Details</h2>
-  <table>
+  <h4>Update Personal Details
+  <%= link_to "Update", edit_user_registration_path %></h4><br>
+  <div><h2><u>My Booking Details</u></h2></div>
+  <table cellspacing="1" cellpadding="1">
   <thead>
     <tr>
-      <th>Child Name</th>
-      <th>Date</th>
-      <th>Country</th>
-      <th>City</th>
-      <th>Mobile</th>
-      <th>Available Date</th>
+      <th>CHILD NAME</th>&nbsp
+      <th>AGE</th>&nbsp
+      <th>COUNTRY</th>
+      <th>CITY</th>
+      <th>MOBILE</th>
+      <th>DATE</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -32,12 +35,14 @@
   <% @booking_details.each do |booking| %>
   <tr>
   <td><%= booking.name %></td>
-  <td><%= booking.date %></td>
+  <td><%= booking.age %></td>
   <td><%= booking.country %></td>
   <td><%= booking.city %></td>
   <td><%= booking.number %></td>
-  <td><%= link_to "Edit", edit_booking_detail_path(@booking_details) %></td>
-  <%# <td><%= booking.available_date %></td> 
+  <td><%= booking.date %></td>
+  <td><%= link_to "Edit", edit_booking_detail_path(booking) %></td>
+  <%# <td><%= link_to "Destroy", destroy_booking_detail_path(@booking_details), :method=>:delete %></td> 
+  
 </tr>
   <%end %>
   </tbody>

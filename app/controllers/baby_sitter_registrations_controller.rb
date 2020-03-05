@@ -1,6 +1,6 @@
 class BabySitterRegistrationsController < ApplicationController
     before_action :authenticate_user!
-    before_action :find_babysitter
+    before_action :find_babysitter,only: [:edit, :update, :destroy]
     before_action :authorise_user!, only: [:edit, :update, :destroy]
     def new
         @baby_sitter = BabySitterRegistration.new

@@ -1,7 +1,7 @@
 class BookingDetailsController < ApplicationController
 before_action :authenticate_user!
-before_action :find_booking
-before_action :authorise_user!
+before_action :find_booking,only: [:edit,:update,:destroy]
+before_action :authorise_user!,only: [:edit,:update,:destroy]
    def index
     end
 
@@ -28,7 +28,7 @@ before_action :authorise_user!
 
     def update
         if (@booking.update(booking_params))
-            redirect_to @babysitter
+            redirect_to @booking
         else
             render 'edit'
         end
@@ -41,13 +41,13 @@ before_action :authorise_user!
 
 
     private
-    
+
     def booking_params
         params.require(:booking_detail).permit(:name, :age, :number, :country, :city, :date, :message, :baby_sitter_registration_id, :user_id)
     end
 
     def find_booking
-        @booking =BookingDetail.find(params[:id])
+        @booking = BookingDetail.find(params[:id])
     end
 
     def authorise_user!
