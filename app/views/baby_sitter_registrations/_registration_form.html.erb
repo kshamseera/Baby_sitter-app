@@ -1,4 +1,7 @@
-<%= form_with(model: baby_sitter_registration, local: true) do |form| %>
+<%= form_with(model: baby_sitter_registration, local: true,class:"form") do |form| %>
+
+<section>
+
   <% if baby_sitter_registration.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(baby_sitter_registration.errors.count, "error") %> prohibited this event from being saved:</h2>
@@ -11,63 +14,62 @@
     </div>
   <% end %>
 <div class ="container">
-<h2>Compleat your profile </h2>
+<h2>Complete your profile </h2><br>
   <div class="field">
-    <%= form.label :First_name %>
-    <%= form.text_field :first_name %>
+    <%= form.label :First_name, class:"col-5"%>
+     <%= form.text_field :first_name,:required => true,class:"col-6" %>
   </div>
 
   <div class="field">
-    <%= form.label :Last_name %>
-    <%= form.text_field :last_name %>
+    <%= form.label :Last_name,class:"col-5" %>
+     <%= form.text_field :last_name,class:"col-6",:required => true %>
   </div>
 
   <div class="field">
    
-    <%= form.label :Gender %>
+    <%= form.label :Gender,class:"col-5" %>
     <%= form.label :Male %>
-    <%= form.radio_button :Gender, 'Male' %>
+    <%= form.radio_button :Gender, 'Male' %>&nbsp
      <%= form.label :Female %>
     <%= form.radio_button :Gender, 'Female' %>
   </div>
 
   <div class="field">
-    <%= form.label :Country %>
-    <%= form.text_field :country %>
+    <%= form.label :Country ,class: "col-5" %>
+    <%= form.text_field :country,:required => true, class:"col-6" %>
   </div>
 
   <div class="field">
-    <%= form.label :City %>
-    <%= form.text_field :city %>
+    <%= form.label :City, class: "col-5"%>
+    <%= form.text_field :city, :required => true ,class:"col-6"%>
   </div>
 
   <div class="field">
-    <%= form.label :Preferred_Languages %>
-    <%= form.text_area :language %>
+    <%= form.label :Preferred_Languages, class: "col-5" %>
+    <%= form.text_area :language, :required => true,class:"col-6" %>
   </div>
   
   <div class="field">
-    <%= form.label :Description %>
-    <%= form.text_area :description %>
+    <%= form.label :Description , :plcaeholder => "(eg:about yourself,experience etc.)",class: "col-5" %>
+    <%= form.text_area :description,:required => true,class: "col-6" %>
   </div>
-
+ <div class="field">
+    <%= form.label :Availble_Date, class:"col-5" %>
+    <%= form.date_field :available_date, :required => true, class:"col-6" %>
+  </div>
   <div class="field">
-    <%= form.label :Amount_per_hour %>
-    <%= form.text_field :amount %>
+    <%= form.label :Amount_per_hour, class: "col-5" %>
+    <%= form.text_field :amount,:required => true,class:"col-6" %>
   </div>
 
  <div class="field">
-    <%= form.label :Upload_CV %>
-    <%= form.file_field :upload_cv %>
+    <%= form.label :Upload_Photo , accept: 'image/png, image/gif, image/jpeg, image/jpg',class:"col-5"%>
+    <%= form.file_field :upload_image , :required => true,class:"col-4" %>
   </div>
-
- <div class="field">
-    <%= form.label :Upload_Photo %>
-    <%= form.file_field :upload_image  %>
-  </div>
-
+<br>
   <div class="actions">
-    <%= form.submit "Create as baby sitter" %>
+    <%= form.submit "New Baby Sitter" %>
   </div>
 <% end %>
 </div>
+</section>

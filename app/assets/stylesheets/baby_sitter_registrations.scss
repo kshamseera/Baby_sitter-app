@@ -1,3 +1,42 @@
 // Place all the styles related to the BabySitterRegistrations controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+@import "bootstrap";
+
+.form{
+  .field {
+    @extend .form-group, .row;
+  }
+}
+input[type=submit] {
+  @extend .btn, .btn-primary;
+}
+
+.continue {
+    background-color:rgb(95, 146, 194);
+    color: white;
+    max-width: 25%;  
+  }
+  
+  
+  .preview{
+    img{
+        padding: 10px;
+       max-width: 50%;
+    //    height:35vh;
+       border-radius: 30%;
+    }
+  }
+  .box{
+      display:grid;
+      justify-content: center;
+      margin: 40px;
+      margin-left: 60px;
+  }
+  h1{
+    text-transform: uppercase;
+    justify-content: center;
+}
+p{
+    font-size: 24px;
+}

@@ -1,6 +1,7 @@
 class BabySitterRegistrationsController < ApplicationController
-    before_action :authenticate_user!, only: [:show]
-
+    before_action :authenticate_user!
+    before_action :find_babysitter
+    before_action :authorise_user!, only: [:edit, :update, :destroy]
     def new
         @baby_sitter = BabySitterRegistration.new
     end
@@ -10,18 +11,41 @@ class BabySitterRegistrationsController < ApplicationController
         @baby_sitter.user_id=current_user.id
        
         if(@baby_sitter.save)
-            redirect_to @baby_sitter
+            redirect_to "/"
         else
             render 'new'
         end
     end
+
     def show
         @baby_sitter= BabySitterRegistration.find(params[:id])
     end
+
+    def update
+        if (@babysitter.update(baby_sitter_registration_params))
+            redirect_to @babysitter
+        else
+            render 'edit'
+        end
+    end
+
+    def destroy
+        @babysitter.delete
+
+        redirect_to  baby_sitter_registrations_path
+    end
+
     private
 
     def baby_sitter_registration_params
-        params.require(:baby_sitter_registration).permit(:first_name,:last_name, :gender, :country,:city, :language, :description, :available_date,:amount,:upload_cv, :upload_image)
+        params.require(:baby_sitter_registration).permit(:first_name,:last_name, :gender, :country,:city, :language, :description, :available_date,:amount, :upload_image)
     end
-      
+
+    def find_babysitter
+        @babysitter = BabySitterRegistration.find(params[:id])
+    end
+
+    def authorise_user!
+        return true if current_user.id == @babysitter.user_id
+    end
 end

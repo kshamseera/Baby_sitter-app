@@ -26,12 +26,13 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
-
+<br>
   <div class="field">
-    <%= f.label :Is_Baby_sitter %><br />
-    <%= f.check_box :is_baby_sitter, autofocus: true, autocomplete: "is_baby_sitter" %>
+  <%= f.check_box :is_baby_sitter, autofocus: true, autocomplete: "is_baby_sitter" %>
+    <%= f.label :Is_Baby_sitter %><br/>
+    
   </div>
-
+<br>
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>

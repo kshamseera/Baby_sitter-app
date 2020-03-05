@@ -1,0 +1,54 @@
+  <% if user_signed_in?  && current_user.is_baby_sitter == true %>
+  <% @baby_sitter_details . each do |babysitter| %>
+  <div class="container">
+  <h2> Welcome <%= babysitter.first_name + ' ' + babysitter.last_name %></h2> <br>
+  <p class = "preview"><%= image_tag (babysitter.upload_image) if babysitter.upload_image.attached? %></p>
+  <div>
+  <p><strong>Country:</strong> <%= babysitter.country%></p>
+  <p><strong>Prefered City:</strong> <%= babysitter.city %></p>
+  <p><strong>Languages:</strong> <%= babysitter.language %></p>
+  <p><strong>Available_Date:</strong> <%= babysitter.available_date %></p>
+  <p><strong>About myself:</strong> <%= babysitter.description %></p>
+  <p><strong>Amount/hr:</strong> <%= babysitter.amount %></p><br>
+    <% end %>
+  <%= button_to "Edit Profile" ,edit_baby_sitter_registration_path(@baby_sitter_details,@booking_detail) ,:method=> :get%>
+  <%# <%= link_to "Delete", destroy_baby_sitter_registration_path(@booking_detail,@baby_sitter_details, :method =>:delete )%> 
+    <%else  %>
+  <div class ="container">
+  <h2>My Booking Details</h2>
+  <table>
+  <thead>
+    <tr>
+      <th>Child Name</th>
+      <th>Date</th>
+      <th>Country</th>
+      <th>City</th>
+      <th>Mobile</th>
+      <th>Available Date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+ <tbody>
+  <% @booking_details.each do |booking| %>
+  <tr>
+  <td><%= booking.name %></td>
+  <td><%= booking.date %></td>
+  <td><%= booking.country %></td>
+  <td><%= booking.city %></td>
+  <td><%= booking.number %></td>
+  <td><%= link_to "Edit", edit_booking_detail_path(@booking_details) %></td>
+  <%# <td><%= booking.available_date %></td> 
+</tr>
+  <%end %>
+  </tbody>
+   </table>
+   <br>
+  <%# <%= link_to "Update_Booking", edit_booking_detail_path(@booking_details) %> 
+
+  <%end%>
+
+
+
+
+
+

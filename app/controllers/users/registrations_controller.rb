@@ -65,7 +65,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if resource.is_baby_sitter == true
        new_baby_sitter_registration_path
     else
-     redirect_to '/'
+     home_index_path
     end
   end 
 

@@ -1,4 +1,4 @@
-<%= form_with(model: booking_detail, local: true) do |form| %>
+<%= form_with(model: booking_detail, local: true,class:"form") do |form| %>
   <% if booking_detail.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(booking_detail.errors.count, "error") %> prohibited this event from being saved:</h2>
@@ -12,46 +12,46 @@
   <% end %>
 
 <div class= "container">
-   <div><h2>Booking For Baby Sitter</h2><div><br>
+   <div><h2> Baby Sitter Booking</h2><div><br>
 
     <div class="field">
-    <%= form.label :Name_of_child %>
-    <%= form.text_field :name %>
+    <%= form.label :Name_of_child, :required => true,class:"col-5" %>
+    <%= form.text_field :name,class:"col-6" %>
   </div>
 
   <div class="field">
-    <%= form.label :Age_of_child %>
-    <%= form.text_field :age %>
+    <%= form.label :Age_of_child, :required => true,class:"col-5" %>
+    <%= form.text_field :age,class:"col-6" %>
   </div>
 
   <div class="field">
-    <%= form.label :Number_of_children %>
-    <%= form.text_field :number %>
+    <%= form.label :Country, :required => true,class:"col-5" %>
+    <%= form.text_field :country,  :required => true, class:"col-6" %>
   </div>
 
   <div class="field">
-    <%= form.label :Country%>
-    <%= form.text_field :country %>
+    <%= form.label :City , :required => true,class:"col-5" %>
+    <%= form.text_field :city, :required => true,class:"col-6" %>
   </div>
 
   <div class="field">
-    <%= form.label :City %>
-    <%= form.text_field :city %>
+    <%= form.label :Mobile_Number ,:required => true, class:"col-5" %>
+    <%= form.text_field :number ,class:"col-6",  :required => true %>
   </div>
 
   <div class="field">
-    <%= form.label :Choose_Date_For_Booking %>
-    <%= form.date_field :date %>
+    <%= form.label :Booking_Date, class:"col-5" %>
+    <%= form.date_field :date, :required => true, class:"col-6" %>
   </div>
 
   <div class="field">
-    <%= form.label :Message %>
-    <%= form.text_field :message %>
+    <%= form.label :Message, :required => true ,class:"col-5"%>
+    <%= form.text_field :message, :required => true ,class:"col-6"%>
   </div>
 
+  <%= form.hidden_field :baby_sitter_registration_id, value: "#{@babysitter_id}" %>
   <div class="field">
-    <%= form.submit "Book Now" %>
+    <%= form.submit "Confirm Booking" %>
   </div>
-
   </div>
   <% end %>
