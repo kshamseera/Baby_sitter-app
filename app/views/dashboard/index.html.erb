@@ -1,5 +1,5 @@
   <% if user_signed_in?  && current_user.is_baby_sitter == true %>
-  <% @baby_sitter_details . each do |babysitter| %>
+ <% @baby_sitter.each do |babysitter|%>
   <div class="container">
   <h3> Welcome <%= babysitter.first_name + ' ' + babysitter.last_name %></h3> <br>
   <p class = "preview"><%= image_tag (babysitter.upload_image) if babysitter.upload_image.attached?%></p><div>
@@ -11,15 +11,17 @@
   <p><strong>Available_Date:</strong> <%= babysitter.available_date %></p>
   <p><strong>About myself:</strong> <%= babysitter.description %></p>
   <p><strong>Amount/hr:</strong> <%= babysitter.amount %></p><br> 
-  <%= button_to "Edit Profile",edit_baby_sitter_registration_path(current_user.baby_sitter_registration) ,:method=> :get%><br>
-  <%= button_to "Delete", baby_sitter_registration_path(babysitter),data:{confirm:"Are you sure?"}, :method =>:delete ,:method=>:get %><br>
+  <div>
+  <%= button_to "Edit Profile",edit_baby_sitter_registration_path(current_user.baby_sitter_registration),:method=> :get%><br>
+  <%= button_to "Delete", baby_sitter_registration_path(babysitter),data:{confirm:"Are you sure?"}, :method =>:delete ,:method=>:get %>
+  </div><br>
   <% end %>
 
   <div>
   <h3>Current Bookings</h3>
   
  </div>
- 
+
   <%else %>
   <div class ="container">
   <h4>Update Personal Details
