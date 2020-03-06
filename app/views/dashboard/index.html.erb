@@ -49,12 +49,12 @@
   <td><%= booking.number %></td>
   <td><%= booking.date %></td>
   <td><%= link_to "Edit", edit_booking_detail_path(booking) %></td>
-  <td><%= link_to "Destroy", booking_detail_path(booking), :method=>:delete%></td> 
-  
+  <td><%= link_to "Destroy", booking_detail_path(booking), :method=>:delete%></td>  
 </tr>
+ <%end %>
 </tbody>
    </table>
-  <%end %>
+ 
   
   <%end%>
 
