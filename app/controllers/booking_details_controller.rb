@@ -26,6 +26,10 @@ before_action :authorise_user!,only: [:edit,:update,:destroy]
         end
     end
 
+    def edit
+        @babysitter_id = @booking.baby_sitter_registration.id
+      end
+
     def update
         if (@booking.update(booking_params))
             redirect_to @booking
@@ -36,7 +40,7 @@ before_action :authorise_user!,only: [:edit,:update,:destroy]
 
     def destroy
         @booking.delete
-        redirect_to  baby_sitter_registrations_path
+        redirect_to  dashboard_index_path
     end
 
 

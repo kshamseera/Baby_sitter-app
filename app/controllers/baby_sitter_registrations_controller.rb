@@ -2,6 +2,7 @@ class BabySitterRegistrationsController < ApplicationController
     before_action :authenticate_user!
     before_action :find_babysitter,only: [:edit, :update, :destroy]
     before_action :authorise_user!, only: [:edit, :update, :destroy]
+
     def new
         @baby_sitter = BabySitterRegistration.new
     end
@@ -23,7 +24,7 @@ class BabySitterRegistrationsController < ApplicationController
 
     def update
         if (@babysitter.update(baby_sitter_registration_params))
-            redirect_to @babysitter
+            redirect_to "/"
         else
             render 'edit'
         end

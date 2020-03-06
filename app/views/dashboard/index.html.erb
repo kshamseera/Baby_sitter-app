@@ -1,23 +1,29 @@
   <% if user_signed_in?  && current_user.is_baby_sitter == true %>
   <% @baby_sitter_details . each do |babysitter| %>
   <div class="container">
-  <h2> Welcome <%= babysitter.first_name + ' ' + babysitter.last_name %></h2> <br>
-  <p class = "preview"><%= image_tag (babysitter.upload_image) if babysitter.upload_image.attached? %></p>
-  <div>
+  <h3> Welcome <%= babysitter.first_name + ' ' + babysitter.last_name %></h3> <br>
+  <p class = "preview"><%= image_tag (babysitter.upload_image) if babysitter.upload_image.attached?%></p><div>
+  <h4>Update Personal Details<%= link_to "Update Account", edit_user_registration_path %></h4><br>
   <p><strong>Country:</strong> <%= babysitter.country%></p>
   <p><strong>Prefered City:</strong> <%= babysitter.city %></p>
    <p><strong>Gender:</strong> <%= babysitter.gender %></p>
   <p><strong>Languages:</strong> <%= babysitter.language %></p>
   <p><strong>Available_Date:</strong> <%= babysitter.available_date %></p>
   <p><strong>About myself:</strong> <%= babysitter.description %></p>
-  <p><strong>Amount/hr:</strong> <%= babysitter.amount %></p><br>
-    <% end %>
-  <%= button_to "Edit Profile",edit_baby_sitter_registration_path(current_user.baby_sitter_registration) ,:method=> :get%>
-  <%# <%= link_to "Delete", destroy_baby_sitter_registration_path(@booking_detail,@baby_sitter_details, :method =>:delete )%> 
-  <%else  %>
+  <p><strong>Amount/hr:</strong> <%= babysitter.amount %></p><br> 
+  <%= button_to "Edit Profile",edit_baby_sitter_registration_path(current_user.baby_sitter_registration) ,:method=> :get%><br>
+  <%= button_to "Delete", baby_sitter_registration_path(babysitter),data:{confirm:"Are you sure?"}, :method =>:delete ,:method=>:get %><br>
+  <% end %>
+
+  <div>
+  <h3>Current Bookings</h3>
+  
+ </div>
+ 
+  <%else %>
   <div class ="container">
   <h4>Update Personal Details
-  <%= link_to "Update", edit_user_registration_path %></h4><br>
+  <%= link_to "Update Account", edit_user_registration_path %></h4><br>
   <div><h2><u>My Booking Details</u></h2></div>
   <table cellspacing="1" cellpadding="1">
   <thead>
@@ -41,15 +47,13 @@
   <td><%= booking.number %></td>
   <td><%= booking.date %></td>
   <td><%= link_to "Edit", edit_booking_detail_path(booking) %></td>
-  <%# <td><%= link_to "Destroy", destroy_booking_detail_path(@booking_details), :method=>:delete %></td> 
+  <td><%= link_to "Destroy", booking_detail_path(booking), :method=>:delete%></td> 
   
 </tr>
-  <%end %>
-  </tbody>
+</tbody>
    </table>
-   <br>
-  <%# <%= link_to "Update_Booking", edit_booking_detail_path(@booking_details) %> 
-
+  <%end %>
+  
   <%end%>
 
 

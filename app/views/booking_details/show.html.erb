@@ -1,10 +1,12 @@
 <%# <p id="notice"><%= notice%> 
 <div class="container"><br>
-<h2 class="success"> Booking Confirmed</h2><br>
+<h2 class="success"> Booking Details</h2><br>
 <p><strong>Child Name: </strong><%= @booking.name %><br></p>
 <p><strong>Age of Child: </strong><%= @booking.age %><br></p>
 <p><strong>Country: </strong><%= @booking.country %><br></p>
 <p><strong>City: </strong><%= @booking.city %><br></p>
+<p><strong>Mobile: </strong><%= @booking.number %><br></p>
+
 <p><strong>Booking Date: </strong><%= @booking.date %><br></p>
 <p><strong>Message: </strong><%= @booking.message %><br></p>
 <%# <%= link_to "Edit Details", edit_booking_detail_path(@booking) %>
