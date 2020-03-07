@@ -33,7 +33,8 @@ before_action :authorise_user!,only: [:edit,:update,:destroy]
 
     def update
         if (@booking.update(booking_params))
-            redirect_to @booking
+            # redirect_to @booking
+            redirect_to  dashboard_index_path, notice: "UPDATED!"
         else
             render 'edit'
         end

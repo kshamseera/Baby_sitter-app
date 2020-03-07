@@ -24,7 +24,7 @@ class BabySitterRegistrationsController < ApplicationController
 
     def update
         if (@babysitter.update(baby_sitter_registration_params))
-            redirect_to "/", notice: "Updated!"
+            redirect_to  dashboard_index_path, notice: "UPDATED!"
         else
             render 'edit'
         end
