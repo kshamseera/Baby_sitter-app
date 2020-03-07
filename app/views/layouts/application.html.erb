@@ -10,7 +10,7 @@
   </head>
 
   <body>
-
+<%# <%= link_to 'babysit', home_index_path %> 
   <section class= "nav-bar">
   <nav >
     <%= render 'layouts/nav-bar' %>
@@ -19,6 +19,9 @@
   
   <%# <p class="notice"><%= notice %></p>
   <%# <p id="alert"><%= alert %> </p> 
+  <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>"><%= value %></div>
+    <% end %>
     <%= yield %>
   </body>
 </html>

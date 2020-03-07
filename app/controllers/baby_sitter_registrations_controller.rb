@@ -24,17 +24,17 @@ class BabySitterRegistrationsController < ApplicationController
 
     def update
         if (@babysitter.update(baby_sitter_registration_params))
-            redirect_to "/"
+            redirect_to "/", notice: "Updated!"
         else
             render 'edit'
         end
     end
 
-    def destroy
-        @babysitter.delete
+    # def destroy
+    #     @babysitter.delete
 
-        redirect_to  baby_sitter_registrations_path
-    end
+    #     redirect_to  "/"
+    # end
 
     private
 

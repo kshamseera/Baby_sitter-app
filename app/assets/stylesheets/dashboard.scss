@@ -2,6 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 @import "bootstrap";
+.preview{
+    img{
+        padding: 10px;
+       max-width: 50%;
+       max-height:35vh;
+       border-radius: 30%;
+    }
+  }
 h2{
     text-transform: uppercase; 
     font-size: 22px;
