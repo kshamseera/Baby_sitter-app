@@ -4,6 +4,7 @@
   <h3> Welcome <%= babysitter.first_name + ' ' + babysitter.last_name %></h3> <br>
   <p class = "preview"><%= image_tag (babysitter.upload_image) if babysitter.upload_image.attached?%></p><div>
   <h4>Update Personal Details<%= link_to "Update Account", edit_user_registration_path %></h4><br>
+  <div><h3><u>Account Details</u></h3></div><br>
   <p><strong>Country:</strong> <%= babysitter.country%></p>
   <p><strong>Prefered City:</strong> <%= babysitter.city %></p>
    <p><strong>Gender:</strong> <%= babysitter.gender %></p>
@@ -61,13 +62,13 @@
   <table cellspacing="1" cellpadding="1">
   <thead>
     <tr>
-      <th>CHILD NAME</th>&nbsp
-      <th>AGE</th>&nbsp
-      <th>COUNTRY</th>
-      <th>CITY</th>
-      <th>MOBILE</th>
-      <th>DATE</th>
-      <th>BABY SITTER</th>
+      <th><strong>CHILD NAME</strong></th>&nbsp
+      <th><strong>AGE</strong></th>&nbsp
+      <th><strong>COUNTRY</strong></th>
+      <th><strong>CITY</strong></th>
+      <th><strong>MOBILE</strong></th>
+      <th><strong>DATE</strong></th>
+      <th><strong>BABY SITTER</strong></th>
 
       <th colspan="3"></th>
     </tr>
