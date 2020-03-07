@@ -9,4 +9,11 @@ class DashboardController < ApplicationController
        @babysitter_booking = BookingDetail.where(baby_sitter_registration: current_user.baby_sitter_registration)
         # raise
     end
+
+    def update
+        @booking = BookingDetail.find(params[:id])
+        @booking.update(status: "Accepted")
+
+        redirect_to dashboard_index_path
+    end
 end

@@ -2,6 +2,7 @@ class BookingDetailsController < ApplicationController
 before_action :authenticate_user!
 before_action :find_booking,only: [:edit,:update,:destroy]
 before_action :authorise_user!,only: [:edit,:update,:destroy]
+
    def index
     end
 
@@ -18,7 +19,7 @@ before_action :authorise_user!,only: [:edit,:update,:destroy]
         @booking = BookingDetail.new(booking_params)
         @booking.user_id=current_user.id
         @booking.baby_sitter_registration_id = params[:booking_detail][:baby_sitter_registration_id]
-
+        @booking.status = "Pending"
         if(@booking.save)
             redirect_to @booking
         else
