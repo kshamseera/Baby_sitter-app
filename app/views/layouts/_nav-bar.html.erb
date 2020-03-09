@@ -1,8 +1,9 @@
 
 <% if user_signed_in? %>
 <div class="nav-bar">
+
 <ul>
- <li class="logo"><%= link_to 'Home', home_index_path %></li>
+ <li><%= link_to 'Home', home_index_path%></li> 
 <li><%= link_to 'Profile' , dashboard_index_path %></li>
  <li><%= link_to 'Sign out' , destroy_user_session_path, method: :delete %> </li><%= image_tag("logo_icon.svg",width:'60px',height:'60px') %>
  
@@ -10,9 +11,10 @@
 
 <%else%>
 <ul>
- <li class="logo"><%= link_to 'Home', home_index_path %></li>
+ <li><%= link_to 'Home', home_index_path %></li>
+ <li><%= link_to 'Log In', new_user_session_path %><strong>/</strong></li>
 <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-<li><%= link_to 'Sign In', new_user_session_path %></li>
+
 </ul>
 <% end %>
 </div>

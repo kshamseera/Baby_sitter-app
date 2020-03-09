@@ -5,8 +5,8 @@ class ListingsController < ApplicationController
       # byebug
     @babysitters = BabySitterRegistration.where('lower(city) = ?', params[:city].strip.downcase)
     if @babysitters.empty?
-      flash.now[:notice] = "Sorry there is no baby sitters in #{ params[:city]} at this moment!"
-      @babysitters = BabySitterRegistration.all
+        redirect_to home_index_path, notice: "Sorry there is no baby sitters in #{ params[:city].upcase} at this moment!"
+      # @babysitters = BabySitterRegistration.all
     end
     # raise
   end 

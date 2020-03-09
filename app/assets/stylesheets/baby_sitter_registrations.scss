@@ -6,8 +6,9 @@
 .form{
   .field {
     @extend .form-group, .row;
+    }
   }
-}
+
 input[type=submit] {
   @extend .btn, .btn-primary;
 }

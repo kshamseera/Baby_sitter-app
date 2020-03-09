@@ -1,13 +1,6 @@
 
-<div class ="search">
-<%= form_tag listings_path, :method=>'get' do %>
- <%= text_field_tag :city,"",placeholder: " Search by City ",class:"col-8" ,:required=>"true"%>
- <%= submit_tag "Search" ,class:"next" %><br>
-<% end %>
-</div>
-
-
 <div class = "grid-container">
+ <%# <%= params[:city]  %> 
 <% @babysitters.each do |babysitter| %>
 <div class ="grid-item">
 <p class= "preview"><%= image_tag (babysitter.upload_image) if babysitter.upload_image.attached? %></p>

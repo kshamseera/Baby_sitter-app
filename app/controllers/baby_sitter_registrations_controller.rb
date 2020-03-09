@@ -1,7 +1,11 @@
 class BabySitterRegistrationsController < ApplicationController
-    before_action :authenticate_user!
+    before_action :authenticate_user!,except:[:index]
     before_action :find_babysitter,only: [:edit, :update, :destroy]
     before_action :authorise_user!, only: [:edit, :update, :destroy]
+    
+    def index
+    @babysitters = BabySitterRegistration.all
+    end
 
     def new
         @baby_sitter = BabySitterRegistration.new
@@ -12,7 +16,7 @@ class BabySitterRegistrationsController < ApplicationController
         @baby_sitter.user_id=current_user.id
        
         if(@baby_sitter.save)
-            redirect_to "/"
+            redirect_to dashboard_index_path
         else
             render 'new'
         end

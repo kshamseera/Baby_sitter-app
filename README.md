@@ -1,4 +1,33 @@
-# README
+
+
+##### Identification of the problem you are trying to solve by building this particular marketplace app.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 This README would normally document whatever steps are necessary to get the
 application up and running.

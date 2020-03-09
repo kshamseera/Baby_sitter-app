@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
   root to: "home#index"
-
-  
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations'
@@ -12,7 +10,6 @@ Rails.application.routes.draw do
   resources :dashboard
 
   get '/baby_sitters/:id', to: 'baby_sitter_registrations#show', as: :baby_sitter
-  # post '/listing', to: 'listings#index'
   get '/listings', to: 'listings#index'
   resources :home
 

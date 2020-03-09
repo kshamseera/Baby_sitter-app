@@ -1,6 +1,4 @@
-   <%# <% if user_signed_in?  && current_user.is_baby_sitter == true %>
-<%# <h1>welcome</h1> %>
-<%# <% else %> 
+   
 <div class="container box" ><br>
 <h1><%= @baby_sitter.first_name + ' ' + @baby_sitter.last_name %></h1> <br>
 <p class = "preview"><%= image_tag (@baby_sitter.upload_image) if @baby_sitter.upload_image.attached? %></p>
@@ -15,6 +13,5 @@
 </div>
 <%= link_to "BOOK_NOW" , new_booking_detail_path({babysitter_id: @baby_sitter.id}),class:"continue" %>
 </div>
-<%# <%end%> 
-<%# <% else %> 
+
   

@@ -3,9 +3,6 @@ before_action :authenticate_user!
 before_action :find_booking,only: [:edit,:update,:destroy]
 before_action :authorise_user!,only: [:edit,:update,:destroy]
 
-   def index
-    end
-
     def show
         @booking = BookingDetail.find(params[:id])
     end

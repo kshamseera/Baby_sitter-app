@@ -1,7 +1,7 @@
-  <% if user_signed_in?  && current_user.is_baby_sitter == true %>
+<% if user_signed_in?  && current_user.is_baby_sitter == true %>
  <% @baby_sitter.each do |babysitter|%>
   <div class="container">
-  <h3> Welcome <%= babysitter.first_name + ' ' + babysitter.last_name %></h3> <br>
+  <h3> Welcome <%= babysitter.first_name.capitalize + ' ' + babysitter.last_name.capitalize %></h3> <br>
   <p class = "preview"><%= image_tag (babysitter.upload_image) if babysitter.upload_image.attached?%></p><div>
   <h4> Update Personal Details<%= link_to "Here", edit_user_registration_path %></h4><br>
   <div><h3><u>Account Details</u></h3></div><br>
@@ -17,10 +17,10 @@
   <%# <%= link_to "Delete", baby_sitter_registration_path(babysitter),data:{confirm:"Are you sure?"}, :method =>:delete %> 
   </div><br>
   <% end %>
-<%if @babysitter_booking .empty? %>
- <p>Sorry there is No Bookings at this moment!</p>
- <%else  %>
-  <div><h3><u>My Current Bookings</u></h3></div>
+  <%if @babysitter_booking .empty? %>
+  <h3> There is No Bookings at this moment!</h3>
+  <%else  %>
+  <div><h4><u>My Current Bookings</u></h4></div>
   <table cellspacing="1" cellpadding="1">
   <thead>
     <tr>
@@ -31,12 +31,11 @@
       <th>MOBILE</th>
       <th>DATE</th>
       <th>STATUS</th>
-      <th>ACCEPT</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
- <tbody>
+  <tbody>
   <% @babysitter_booking.each do |bookings| %>
   <tr>
   <td><%= bookings.name %></td>
@@ -52,15 +51,16 @@
   <% end %>
   </tbody>
   </table>
- <%end %>
+  <%end %>
 
-  <%else %>
+<%else %>
   <div class ="container">
   <h4> Update Personal Details
-  <%= link_to "Update Account", edit_user_registration_path %></h4><br>
+  <%= link_to "Here", edit_user_registration_path %></h4><br>
 
   <%if @booking_details.empty? %>
  <%= "Sorry there is No Bookings at this moment!" %>
+ 
  <%else  %>
   <div><h2><u>My Booking Details</u></h2></div>
   <table cellspacing="1" cellpadding="1">
@@ -78,8 +78,8 @@
       <th colspan="3"></th>
     </tr>
   </thead>
- <tbody>
 
+ <tbody>
   <% @booking_details.each do |booking| %>
   <tr>
   <td><%= booking.name %></td>
@@ -91,7 +91,7 @@
   <td><%= booking.baby_sitter_registration.first_name %></td>
   <td><%= booking.status %></td>
   <td><%= link_to "Edit", edit_booking_detail_path(booking) %></td>
-  <td><%= link_to "Destroy", booking_detail_path(booking),data:{confirm:"Are you sure?"}, :method=>:delete%></td>  
+  <td><%= link_to "Delete", booking_detail_path(booking),data:{confirm:"Are you sure?"}, :method=>:delete%></td>  
 </tr>
   <%end %>
 </tbody>
