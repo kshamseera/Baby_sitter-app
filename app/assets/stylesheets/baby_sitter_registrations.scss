@@ -35,10 +35,11 @@ input[type=submit] {
       margin: 40px;
       margin-left: 60px;
   }
-  h1{
-    text-transform: uppercase;
-    justify-content: center;
-}
+//   h1{
+//     text-transform: uppercase;
+//     justify-content: center;
+//     letter-spacing: 1px;
+// }
 p{
     font-size: 24px;
 }
@@ -47,6 +48,9 @@ p{
   margin-bottom: 30px;
   margin-left: 30%;
   padding:20px;
+  color: blue;
+  font-weight: bold;
+  
 }
 .search{
   display:flex;

@@ -31,7 +31,7 @@
   }
   .container{
     display:grid;
-    background-color:rgb(204, 219, 228);
+    background-color:rgb(171, 219, 248);
     justify-content: center;
     padding:30px;
     margin-top:10%;
@@ -90,10 +90,29 @@
       margin-bottom: 1rem;
       border: 1px solid transparent;
       border-radius: 0.25rem;
-      background-color:rgb(243, 135, 135);
+      background-color:pink;
       font-size: 20px;
       
     } 
+    &.alert-alert{
+      color:red;
+      font-size: 20px;
+      padding:20px;
+      text-transform: capitalize;
+      border: 1px solid transparent;
+      border-radius: 0.25rem;
+    }
+    
+    }
+  .closebtn {
+    margin-left: 15px;
+    color: black;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
   }
-
+    
   
