@@ -116,7 +116,7 @@ belongs_to :baby_sitter_registration
 * Active Storage Attachment/Blob Models:
 
 These tables are implemented for us by AWS when we install their functionality, and we don't have any choice over the attributes and datatypes.
-![blod-model](/docs/schema1.png)
+![blob-model](/docs/schema1.png)
 
 * User model:
   
