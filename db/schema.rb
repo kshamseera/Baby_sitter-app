@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_10_045921) do
+ActiveRecord::Schema.define(version: 2020_03_12_013507) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,7 +40,6 @@ ActiveRecord::Schema.define(version: 2020_03_10_045921) do
     t.bigint "user_id"
     t.string "country"
     t.string "city"
-    t.string "available_date"
     t.string "language"
     t.string "gender"
     t.string "description"
@@ -49,6 +48,7 @@ ActiveRecord::Schema.define(version: 2020_03_10_045921) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "first_name"
     t.string "last_name"
+    t.date "available_date"
     t.index ["user_id"], name: "index_baby_sitter_registrations_on_user_id"
   end
 
@@ -59,11 +59,11 @@ ActiveRecord::Schema.define(version: 2020_03_10_045921) do
     t.string "age"
     t.string "number"
     t.string "city"
-    t.string "date"
     t.string "message"
     t.string "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.date "date"
     t.index ["baby_sitter_registration_id"], name: "index_booking_details_on_baby_sitter_registration_id"
     t.index ["user_id"], name: "index_booking_details_on_user_id"
   end

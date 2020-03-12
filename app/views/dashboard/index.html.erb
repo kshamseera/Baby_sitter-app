@@ -92,9 +92,8 @@
   <td><%= booking.date %></td>
   <td><%= booking.baby_sitter_registration.first_name %></td>
   <td><%= booking.status %></td>
-   <%# <td><%= link_to "New ", baby_sitter_registrations_path(booking) </td> %>
-  <td><%= link_to "Edit", edit_booking_detail_path(booking) %></td>
-  <td><%= link_to "Delete", booking_detail_path(booking),data:{confirm:"Are you sure?"}, :method=>:delete%></td>  
+  <td><%=link_to "Edit", [:edit, booking.baby_sitter_registration, booking]%></td>
+  <td><%= link_to "Delete", [ booking.baby_sitter_registration, booking],data:{confirm:"Are you sure?"}, :method=>:delete%></td>  
 </tr>
   <%end %>
 </tbody>

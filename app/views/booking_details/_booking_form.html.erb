@@ -1,4 +1,4 @@
-<%= form_with(model: booking_detail, local: true,class:"form") do |form| %>
+<%= form_with(model: [@baby_sitter_registration,booking_detail], local: true,class:"form") do |form| %>
   <% if booking_detail.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(booking_detail.errors.count, "error") %> prohibited this event from being saved:</h2>
@@ -41,7 +41,7 @@
 
   <div class="field">
     <%= form.label :Booking_Date, class:"col-5" %>
-    <%= form.date_field :date, :required => true, class:"col-6" %>
+    <%= form.date_select :date, :required => true, class:"col-6" %>
   </div>
 
   <div class="field">

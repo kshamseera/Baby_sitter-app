@@ -13,15 +13,17 @@ end
     def new
         @booking = BookingDetail.new
         @babysitter_id = params[:babysitter_id]
+        @baby_sitter_registration = BabySitterRegistration.find(params[:baby_sitter_registration_id])
     end
 
     def create
+        @baby_sitter_registration = BabySitterRegistration.find(params[:baby_sitter_registration_id])
         @booking = BookingDetail.new(booking_params)
         @booking.user_id=current_user.id
-        @booking.baby_sitter_registration_id = params[:booking_detail][:baby_sitter_registration_id]
+        @booking.baby_sitter_registration_id = params[:baby_sitter_registration_id]
         @booking.status = "Pending"
         if(@booking.save)
-            redirect_to @booking,notice: "Booking Confirmed."
+            redirect_to [@baby_sitter_registration, @booking],notice: "Booking Confirmed"
         else
             render 'new'
         end

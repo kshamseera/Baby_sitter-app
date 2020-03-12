@@ -4,9 +4,11 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
-  resources :booking_details
+  
   resources :listings
-  resources :baby_sitter_registrations
+  resources :baby_sitter_registrations do
+  resources :booking_details 
+  end
   resources :dashboard
 
   get '/baby_sitters/:id', to: 'baby_sitter_registrations#show', as: :baby_sitter

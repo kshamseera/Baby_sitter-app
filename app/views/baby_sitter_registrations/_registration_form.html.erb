@@ -54,8 +54,8 @@
     <%= form.text_area :description,:required => true,class: "col-6" %>
   </div>
  <div class="field">
-    <%= form.label :Availble_Date, class:"col-5" %>
-    <%= form.date_field :available_date, :required => true, class:"col-6" %>
+    <%= form.label :available_date, class:"col-5" %>
+    <%= form.date_select :available_date, :required => true, class:"col-6" %>
   </div>
   <div class="field">
     <%= form.label :Amount_per_hour, class: "col-5" %>
