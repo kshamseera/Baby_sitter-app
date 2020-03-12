@@ -1,10 +1,8 @@
 <body id="heading"> 
-<% if user_signed_in? && !current_user.is_baby_sitter %>
 <div class ="search position">
 <%= form_tag listings_path, :method=>'get' do %>
  <%= text_field_tag :city ,"",placeholder: " Search by City ",class:"col-8",:required=>"true" %>
  <%= submit_tag "Search" ,class:"next"%>
-<% end %>
 <%end %>
 </div>
 </body>

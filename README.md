@@ -2,27 +2,39 @@
 
 #### Identification of the problem you are trying to solve by building this particular marketplace app.
 
- To help the parent who looks to for helping take care of active children
+It's not easy to find a trustworthy baby sitter and it's not possible to know more information such as the quality of the service, feedback of the baby sitter etc. For babysitters as well it's very hard 
+to find parents who are looking for the babysitting service. This Babysitter Booking app connects parents and babysitters. Any one interested can register as babysitter and parents can connect with this babysitter and make booking. 
+
+This baby sitter app addresses following problems
+
+ - Parents get only limited option to choose a babysitter
+ - Can not see the review and ratings of babysitters.
+ - It's not easy for new babysitters to enter in to the market.
+ -  No service allows babysitters to connect with parents and vice versa.
+
 
 #### Why is it a problem that needs solving?
 
-It is very hard to find a trustworthy babysitting online services for all the families with young children. 
+Parents have hard time to find babysitter and never be confident about the babysitters and for the new babysitters it's very hard to enter the market and find customers. 
+
+This application helps the parents to find a trustworthy baby sitter based on reviews and ratings and 
+other informations and helps the babysitter to register easily and find more clients quickly.
 
 #### Description of your marketplace app 
 ##### Purpose
-The purpose of my marketplace app is to design a functional two-way marketplace that is easy to use for anyone to register as a baby sitter and allows the user to book for a particular babysitter. To allow the babysitters an effective way to show case thier skills and for potentional users as a parent to be able browse by city and can book from the web-app.
+The purpose of my marketplace app is to design a functional two-way marketplace that is easy to use for anyone to register as a babysitter and allows the user to book for a particular babysitter. To allow the babysitters an effective way to show case thier skills and for potentional users as a parent to be able browse by city and can book from the web-app.
 ##### Functionality and features
 
 ##### Visitors:
 
-* Can view sign up for a new account as a user or a baby sitter via a sign up form that takes information such as user name, email and password.
-* Can view the websites current listings that are available for booking with the baby sitter 
+* Can view sign up for a new account as a user or a babysitter via a sign up form that takes information such as user name, email and password.
+* Can view the websites current listings that are available for booking with the babysitter 
 * Visitors Cannot make a booking without login to the website.
   
-##### Baby sitter:
+##### babysitter:
 
-* Website allows user to signup as a baby sitter.
-* Once the baby sitter sign up, they can complete their profile via a form. That takes the information such as first name, last name, country,city, available date,amount/hr and allows to upload their own image.
+* Website allows user to signup as a babysitter.
+* Once the babysitter sign up, they can complete their profile via a form. That takes the information such as first name, last name, country,city, available date,amount/hr and allows to upload their own image.
 * They have their own profile page, where they can see their profile information and current booking details. 
 * They can edit both personal details(email and password) and profile details.
 * It also possible for the babysitter to set the status of bookings.(pending/accepted).
@@ -31,17 +43,17 @@ The purpose of my marketplace app is to design a functional two-way marketplace 
 ##### User as a parent:
 
 * Website allows the user to sign up.
-* Can view all the available baby sitters
-* User can search for a baby sitter based on a city.
-* Once the user logged in, they can see full details of a particular baby sitter.
-* Allows the user to make a booking with a baby sitter via a form, that takes information about the child and the date to which they want to make a booking.
+* Can view all the available babysitters
+* User can search for a babysitter based on a city.
+* Once the user logged in, they can see full details of a particular babysitter.
+* Allows the user to make a booking with a babysitter via a form, that takes information about the child and the date to which they want to make a booking.
 * Once the user made booking,website shows booking confirmation notice and also displays the booking details.
 * User can view their booking details in their profile page.
 * From the profile page, user can Edit and Delete the booking.
 * It is also possible to update their personal information such as email and password from the profile page.
 * It is possible to view their current status of the booking they made.
   
-* Baby sitter app will use Devise. Devise provides a full authentication package with views, controllers and routes to allow users to sign up, edit user profiles, reset passwords, etc. Devise can be used without the database authentication module with provides signup via email password.
+* babysitter app will use Devise. Devise provides a full authentication package with views, controllers and routes to allow users to sign up, edit user profiles, reset passwords, etc. Devise can be used without the database authentication module with provides signup via email password.
 ##### Other Features:
 * Authorisation
 * Input validation.
@@ -51,14 +63,19 @@ The purpose of my marketplace app is to design a functional two-way marketplace 
 ![site-map](/docs/site-map.png)
 ##### Screenshots
 ##### Target Audience
+
+Parent - Parent who want a babysitter for their active children, can search for babysitters and make booking with a babysitter.
+Babysitter - Can register as babysitter and can connect with parents and get bookings.
+
 ##### Tech stack 
 * Ruby on Rails
 * Ruby 2.5.1
 * PostgreSQL
 * Bootstrap
-* HTML&CSS
+* HTML & CSS
 * Heroku (deployment)
-* AWS (image uploading)
+* AWS S3 (image uploading)
+* Github
 #### User stories 
 ![user-story](/docs/user_stories.png)
 #### Wireframes for your app
@@ -75,19 +92,33 @@ One of the high-level components in my application is Active-Record. Active-Reco
   
 All Heroku services are hosted on Amazon's EC2 cloud-computing platform
 
-* AWS: To handle image uploading and hosting.It can speed up the uploading process.App allows the baby sitter to upload image via form.
+* AWS S3: AWS cloud S3 service is used for uploading and storing the images. It can speed up the uploading process. App allows the babysitter to upload image via form.
+
+* PostgreSQL: This database is used for storing the data of the application. 
   
 
 #### Describe your projects models in terms of the relationships (active record associations) they have with each other
 
+Application has three models such as User, BabySitterRegistration and BookingDetail. 
+
+User is a devise model which captures the signup information. BabySitterRegistration capture 
+the information of the babysitter. BookingDetail stores the booking details made by the user.
+
+User has one to one relationship with BabySitterRegistration. BookingDetail has many to one 
+relationship with User and BabySitterRegistration.
+
 ##### user
-* There are two types of user. One as a baby sitter and one user as a parent
-* User model has_one relationship with the baby_sitter_registration model. This means that user as a baby sitter can have only one registration. This is written as below in the app.
+
+user has one to one relationshp with baby_sitter_registration 
+
+
+* There are two types of user. One as a babysitter and one user as a parent
+* User model  user as a babysitter can have only one registration one to one relationship with the baby_sitter_registration model
   
 ```
 has_one :baby_sitter_registration
 ```
-* The user as a parent can have many booking with baby sitters. This is written as below in the app. 
+* The user as a parent can have many booking with babysitters. This is written as below in the app. 
 
 ```
 has_many :booking_details
@@ -124,7 +155,7 @@ These tables are implemented for us by AWS when we install their functionality, 
   ![user-model](/docs/schema3.png)
 
 * BabySitterRegistration model:
-  These models are designed to store all the baby sitter details .
+  These models are designed to store all the babysitter details .
 
 #### Describe the way tasks are allocated and tracked in your project
 

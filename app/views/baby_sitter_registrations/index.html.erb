@@ -1,12 +1,10 @@
 
 
 <h2 class="lists">Meet And Book Our BabySitters</h2>
-<% if user_signed_in? && !current_user.is_baby_sitter %>
 <div class ="search">
 <%= form_tag listings_path, :method=>'get' do %>
  <%= text_field_tag :city,"",placeholder: " Search by City ",class:"col-8" ,:required=>"true"%>
  <%= submit_tag "Search" ,class:"next" %><br>
-<% end %>
 <%end %>
 </div>
 <div class = "grid-container">
