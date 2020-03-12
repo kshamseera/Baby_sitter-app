@@ -3,13 +3,12 @@
 <h1><%= @baby_sitter.first_name + ' ' + @baby_sitter.last_name %></h1> <br>
 <p class = "preview"><%= image_tag (@baby_sitter.upload_image) if @baby_sitter.upload_image.attached? %></p>
 <div>
-  <p><strong>Country:</strong> <%= @baby_sitter.country%></p>
+<p><strong>Country:</strong> <%= @baby_sitter.country%></p>
 <p><strong>Prefered City:</strong> <%= @baby_sitter.city %></p>
 <p><strong>Languages:</strong> <%= @baby_sitter.language %></p>
 <p><strong>Available_Date:</strong> <%= @baby_sitter.available_date %></p>
 <p><strong>About myself:</strong> <%= @baby_sitter.description %></p>
 <p><strong>Amount/hr:</strong> <%= @baby_sitter.amount %></p><br>
-
 </div>
 <%= link_to "BOOK_NOW" , new_booking_detail_path({babysitter_id: @baby_sitter.id}),class:"continue" %>
 </div>

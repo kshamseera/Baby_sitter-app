@@ -1,4 +1,6 @@
 <% if user_signed_in?  && current_user.is_baby_sitter == true %>
+
+<%#dashboard for the babysitter%>
  <% @baby_sitter.each do |babysitter|%>
   <div class="container">
   <h3> Welcome <%= babysitter.first_name.capitalize + ' ' + babysitter.last_name.capitalize %></h3> <br>
@@ -20,15 +22,15 @@
   <%if @babysitter_booking .empty? %>
   <h3> There is No Bookings at this moment!</h3>
   <%else  %>
-  <div><h4><u>My Current Bookings</u></h4></div>
+  <%#display the current booking details of a baby sitter %>
+  <div><h3><u>My Current Bookings</u></h3></div>
   <table cellspacing="1" cellpadding="1">
   <thead>
     <tr>
       <th>CHILD NAME</th>&nbsp
       <th>AGE</th>&nbsp
-      <th>COUNTRY</th>
       <th>CITY</th>
-      <th>EMAIL</th>
+      <th>EMAIL_ID</th>
       <th>MOBILE</th>
       <th>DATE</th>
       <th>STATUS</th>
@@ -41,10 +43,8 @@
   <tr>
   <td><%= bookings.name %></td>
   <td><%= bookings.age %></td>
-  <td><%= bookings.country %></td>
   <td><%= bookings.city %></td>
   <td><%= bookings.user.email %></td>
-
   <td><%= bookings.number %></td>
   <td><%= bookings.date %></td>
   <td><%= bookings.status %></td>
@@ -55,7 +55,7 @@
   </tbody>
   </table>
   <%end %>
-
+<%#dashboard for the signed in users %>
 <%else %>
   <div class ="container">
   <h4> Update Personal Details
@@ -65,13 +65,13 @@
  <%= "Sorry there is No Bookings at this moment!" %>
  
  <%else  %>
+ <%#display booking details of a user %>
   <div><h2><u>My Booking Details</u></h2></div>
   <table cellspacing="1" cellpadding="1">
   <thead>
     <tr>
       <th><strong>CHILD NAME</strong></th>&nbsp
       <th><strong>AGE</strong></th>&nbsp
-      <th><strong>COUNTRY</strong></th>
       <th><strong>CITY</strong></th>
       <th><strong>MOBILE</strong></th>
       <th><strong>DATE</strong></th>
@@ -87,12 +87,12 @@
   <tr>
   <td><%= booking.name %></td>
   <td><%= booking.age %></td>
-  <td><%= booking.country %></td>
   <td><%= booking.city %></td>
   <td><%= booking.number %></td>
   <td><%= booking.date %></td>
   <td><%= booking.baby_sitter_registration.first_name %></td>
   <td><%= booking.status %></td>
+   <%# <td><%= link_to "New ", baby_sitter_registrations_path(booking) </td> %>
   <td><%= link_to "Edit", edit_booking_detail_path(booking) %></td>
   <td><%= link_to "Delete", booking_detail_path(booking),data:{confirm:"Are you sure?"}, :method=>:delete%></td>  
 </tr>

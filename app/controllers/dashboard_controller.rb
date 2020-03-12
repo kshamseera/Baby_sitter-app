@@ -10,7 +10,7 @@ class DashboardController < ApplicationController
        @babysitter_booking = BookingDetail.where(baby_sitter_registration: current_user.baby_sitter_registration)
         
     end
-
+    # update the status of booking
     def update
         @booking = BookingDetail.find(params[:id])
         @booking.update(status: "Accepted")

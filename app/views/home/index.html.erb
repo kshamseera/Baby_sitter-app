@@ -1,18 +1,18 @@
-
-<div class="heading"> 
+<body id="heading"> 
+<%# <div class="heading"> 
 <h1><strong>BABY SITTERS NOW</strong></h1><br>
 </div>
  <div class="content"> 
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
 </div> 
  <br>
-<br>
+<br> %>
 
-<div class ="search ">
+<div class ="search position">
 <%= form_tag listings_path, :method=>'get' do %>
  <%= text_field_tag :city ,"",placeholder: " Search by City ",class:"col-8",:required=>"true" %>
  <%= submit_tag "Search" ,class:"next"%>
 <% end %>
 </div>
-
+</body>
 

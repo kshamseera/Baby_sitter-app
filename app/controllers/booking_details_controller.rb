@@ -3,10 +3,13 @@ before_action :authenticate_user!
 before_action :find_booking,only: [:edit,:update,:destroy]
 before_action :authorise_user!,only: [:edit,:update,:destroy]
 
-    def show
-        @booking = BookingDetail.find(params[:id])
-    end
-
+def index
+end
+   #Display booking details of a user
+   def show
+    @booking = BookingDetail.find(params[:id])
+  end
+    # making new booking for a particular baby sitter
     def new
         @booking = BookingDetail.new
         @babysitter_id = params[:babysitter_id]
@@ -18,12 +21,13 @@ before_action :authorise_user!,only: [:edit,:update,:destroy]
         @booking.baby_sitter_registration_id = params[:booking_detail][:baby_sitter_registration_id]
         @booking.status = "Pending"
         if(@booking.save)
-            redirect_to @booking
+            redirect_to @booking,notice: "Booking Confirmed."
         else
             render 'new'
         end
     end
-
+    
+    # edit the booking details
     def edit
         @babysitter_id = @booking.baby_sitter_registration.id
       end
@@ -36,7 +40,7 @@ before_action :authorise_user!,only: [:edit,:update,:destroy]
             render 'edit'
         end
     end
-
+    # delete a booking details
     def destroy
         @booking.delete
         redirect_to  dashboard_index_path
@@ -46,7 +50,7 @@ before_action :authorise_user!,only: [:edit,:update,:destroy]
     private
 
     def booking_params
-        params.require(:booking_detail).permit(:name, :age, :number, :country, :city, :date, :message, :baby_sitter_registration_id, :user_id)
+        params.require(:booking_detail).permit(:name, :age, :number, :city, :date, :message, :baby_sitter_registration_id, :user_id)
     end
 
     def find_booking

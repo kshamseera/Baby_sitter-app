@@ -2,11 +2,12 @@ class BabySitterRegistrationsController < ApplicationController
     before_action :authenticate_user!,except:[:index]
     before_action :find_babysitter,only: [:edit, :update, :destroy]
     before_action :authorise_user!, only: [:edit, :update, :destroy]
-    
+
+    # listing all baby sitters
     def index
     @babysitters = BabySitterRegistration.all
     end
-
+    # create new baby sitter
     def new
         @baby_sitter = BabySitterRegistration.new
     end
@@ -21,11 +22,13 @@ class BabySitterRegistrationsController < ApplicationController
             render 'new'
         end
     end
-
+    
+    #display the details of a baby sitter
     def show
         @baby_sitter= BabySitterRegistration.find(params[:id])
     end
 
+    #update the details of a baby sitter
     def update
         if (@babysitter.update(baby_sitter_registration_params))
             redirect_to  dashboard_index_path, notice: "UPDATED!"
