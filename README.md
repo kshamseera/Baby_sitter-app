@@ -144,7 +144,7 @@ All Heroku services are hosted on Amazon's EC2 cloud-computing platform
 
 * **AWS S3**: AWS cloud S3 service is used for uploading and storing the images. It can speed up the uploading process. App allows the babysitter to upload image via form.
 
-* PostgreSQL: This database is used for storing the data of the application. 
+* **PostgreSQL**: This database is used for storing the data of the application. 
   
 
 #### Describe your projects models in terms of the relationships (active record associations) they have with each other
@@ -185,7 +185,19 @@ belongs_to :baby_sitter_registration
 * BookingDetail also belongs_to baby_sitter_registration because the baby_sitter_registration model gives information to the BookingDetail model. 
   
 #### Discuss the database relations to be implemented in your application
+Here is my ERD.
+
 ![erd](docs/erd.png)
+
+I start with User table. This was created via the devise gem. It automatically creates table with email and password fields. Then I customise the table by running the migration to add user_name (as string)and is_baby_sitter(as boolean) field. In this table user_id is the primary key.
+
+Next I created Baby_sitter registration table. It stores the baby sitters personal informations when they sign_up as baby sitter. Baby_sitter_registration_id is the primary key. This table has a one to one relationship with the User table. And one to many relationship with booking detail table, that i will describe below. So this table has two foreign keys like booking_id and user_id. 
+
+Then I created my final table, booking_details. It stores all booking details of a user who made bookings with the baby sitter. Beacuse of that, this table is associated to baby_sitter_registrations table. And also it has an association with the users table. This table has a many to one relationship with other tables. In this table booking_id is the primary key and user_id and baby_sitter_registration_id are the foreign keys.
+
+During the development process, several times I run the migration to add/remove columns from the tables.
+
+A foreign key is a system that you can use to associate one table to another, normally this is done by linking one table column to another. Using our tables as an example we have a User table, and we are linking it to the bookingdetails table via a foreign key, this uses a column in our UserDetails table that references the User table(Assuming the user_id of the table). The main purpose behind this relation other than gaining access to the data between the tables is to also gain access to ActiveRecord now we can write things such as User.booking_detail.email instead of the SQL statements.
 
 
 #### Provide your database schema design
@@ -213,12 +225,14 @@ These tables are implemented for us by AWS when we install their functionality, 
 
   ![baysitter&booking-model](/docs/schema2.png)
 
-  All models are created by running 'rails g model model name' command. Some times i customize the models by running the migrations to add or remove columns from the table.
+  All models are created by running 'rails g model model name' command. Some times I customize the models by running the migrations to add or remove columns from the table.
 
 #### Describe the way tasks are allocated and tracked in your project
 During this project I used Trello having used it in previous assignments I found it a really helpful way to keep tracking of what I need to do, what I'm currently working on and what I've completed already. You can see my attached screen grabs of my progress below.
-![trello](docs/trello1.png)
+
 ![trello](docs/trello2.png)
+![trello](docs/trello1.png)
+![trello](docs/trello3.png)
 ![trello](docs/trello-final.png)
 
 
@@ -233,27 +247,3 @@ During this project I used Trello having used it in previous assignments I found
 
 
 
-
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
