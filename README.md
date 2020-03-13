@@ -20,9 +20,15 @@ Parents have hard time to find babysitter and never be confident about the babys
 This application helps the parents to find a trustworthy baby sitter based on reviews and ratings and 
 other informations and helps the babysitter to register easily and find more clients quickly.
 
+#### links 
+  * Deployed website: https://radiant-temple-23791.herokuapp.com/home
+  * Github: https://github.com/kshamseera/Baby_sitter-app
+  
 #### Description of your marketplace app 
+
 ##### Purpose
 The purpose of my marketplace app is to design a functional two-way marketplace that is easy to use for anyone to register as a babysitter and allows the user to book for a particular babysitter. To allow the babysitters an effective way to show case thier skills and for potentional users as a parent to be able browse by city and can book from the web-app.
+
 ##### Functionality and features
 
 ##### Visitors:
@@ -30,8 +36,39 @@ The purpose of my marketplace app is to design a functional two-way marketplace 
 * Can view sign up for a new account as a user or a babysitter via a sign up form that takes information such as user name, email and password.
 * Can view the websites current listings that are available for booking with the babysitter 
 * Visitors Cannot make a booking without login to the website.
-  
-##### babysitter:
+##### Other Features:
+* Authorisation
+* Input validation.
+* AWS Image hosting.
+
+##### Sitemap
+![site-map](/docs/site-map.png)
+##### Screenshots
+![screen1](docs/Screen1.png)
+![screen2](docs/Screen2.png)
+![screen3](docs/Screen3.png)
+![screen4](docs/Screen4.png)
+##### Target Audience
+
+Parent - Parent who want a babysitter for their active children, can search for babysitters and make booking with a babysitter.
+Babysitter - Can register as babysitter and can connect with parents and get bookings.
+
+##### Tech stack 
+
+* Ruby 2.5.1: Ruby is the main programming language used in BabySitter App 
+*  Ruby on Rails: Rails is an open source development framework for web applications written in Ruby. As a model-view-controller framework, it provides the database structure
+* PostgreSQL: This database is used for storing the data of the application.   
+* Bootstrap: 
+* HTML: Hypertext Markup Language was used for the structure of Babysitter app pages with embedded ruby (erb)—HTML with Ruby code inside it. This allowed the development to include Ruby functionality in a format that the code could output a pure HTML file.
+* CSS: I used SCSS, a superset of CSS, so that we were able to extend the functionality of CSS, including by storing styles as variables and nesting.
+
+* Heroku for deployment
+* AWS S3 for image uploading
+* Github
+#### User stories 
+![user-story](/docs/user_stories.png)
+
+##### User as a Babysitter:
 
 * Website allows user to signup as a babysitter.
 * Once the babysitter sign up, they can complete their profile via a form. That takes the information such as first name, last name, country,city, available date,amount/hr and allows to upload their own image.
@@ -40,7 +77,7 @@ The purpose of my marketplace app is to design a functional two-way marketplace 
 * It also possible for the babysitter to set the status of bookings.(pending/accepted).
 * Cannot make a booking.
 
-##### User as a parent:
+##### User as a Parent:
 
 * Website allows the user to sign up.
 * Can view all the available babysitters
@@ -51,40 +88,43 @@ The purpose of my marketplace app is to design a functional two-way marketplace 
 * User can view their booking details in their profile page.
 * From the profile page, user can Edit and Delete the booking.
 * It is also possible to update their personal information such as email and password from the profile page.
-* It is possible to view their current status of the booking they made.
-  
+* It is possible to view their current status of the booking they made. 
 * babysitter app will use Devise. Devise provides a full authentication package with views, controllers and routes to allow users to sign up, edit user profiles, reset passwords, etc. Devise can be used without the database authentication module with provides signup via email password.
-##### Other Features:
-* Authorisation
-* Input validation.
-* AWS Image hosting.
 
-##### Sitemap
-![site-map](/docs/site-map.png)
-##### Screenshots
-##### Target Audience
-
-Parent - Parent who want a babysitter for their active children, can search for babysitters and make booking with a babysitter.
-Babysitter - Can register as babysitter and can connect with parents and get bookings.
-
-##### Tech stack 
-* Ruby on Rails
-* Ruby 2.5.1
-* PostgreSQL
-* Bootstrap
-* HTML & CSS
-* Heroku (deployment)
-* AWS S3 (image uploading)
-* Github
-#### User stories 
-![user-story](/docs/user_stories.png)
 #### Wireframes for your app
+![home](/docs/home.png)
+![sign_up](docs/sign_up.png)
+![sign_in](docs/login.png)
+![listing](docs/listings.png)
+![single_listing](docs/single&#32;babysitter&#32;view.png)
 
+![register](docs/register&#32;as&#32;babysitter.png)
+![booking](docs/babysitter&#32;booking.png)
+![confirmation](docs/booking&#32;confirmation&#32;details.png)
+![mobile-home](docs/mobile-home.png)
+![mobile-listing](docs/mobile-listing.png)
+![mob_single](docs/mobile-single-babysitter&#32;view.png)
 #### An ERD for your app
 ![erd](/docs/erd.png)
 
 #### Explain the different high-level components (abstractions) in your app
+
+* Active-Record
+  
 One of the high-level components in my application is Active-Record. Active-Record is a design pattern that uses the MVC (Model, View, Controller) to map the columns inside your table. Doing this provides us with ORM (Object Relational Mapping). Doing this allows us to access our SQL database (In our case PostgreSQL) without having to write SQL statements. Active-Record also allows us the ability to represent our models and their data, associations between our models, represent inheritance through related models and validate models before they get persisted to the database. These columns are accessed by methods are inferred inside the database schema.
+
+* Routes
+
+One significant level of abstraction in Rails is the routes. The routes allow the app to match requests (e.g. GET, POST) to an action in the controller. Ultimately, this will direct the user to a URL, and because of this abstraction, we are not required to hard code the URLs or routes as strings.
+
+* View is the information that the user can see and interact with.
+* Controller is what handles the user's inputs
+  
+Entering the URL in a browser will send a request to a web server. Using resources, it's able to create RESTful routes for our components and generate paths in the app.
+
+Once the server receives a request, it will map the URL path to the controller it needs (e.g. to create or edit a login from a user) and the view part of the app will render a page where the user sees a certain page, in this case a login page. Once a user logs in or signs up for example, the model comes into play, getting  all users from the database and rendering the home page to the user with their user account details rendering on the page.
+
+* Partial- Partials allow to extract pieces of code from your templates to separate files and also reuse them throughout your templates. In my app, i have used two partials and render into the other view files.
 
 #### Detail any third party services that your app will use
 
@@ -107,40 +147,35 @@ the information of the babysitter. BookingDetail stores the booking details made
 User has one to one relationship with BabySitterRegistration. BookingDetail has many to one 
 relationship with User and BabySitterRegistration.
 
-##### user
-
-user has one to one relationshp with baby_sitter_registration 
-
-
-* There are two types of user. One as a babysitter and one user as a parent
-* User model  user as a babysitter can have only one registration one to one relationship with the baby_sitter_registration model
+##### User
   
 ```
 has_one :baby_sitter_registration
-```
-* The user as a parent can have many booking with babysitters. This is written as below in the app. 
-
-```
 has_many :booking_details
 ```
+* The User model also has_one baby_sitter_registration
+* The User model has_many relationship with the booking details.Beacuse each user can be many booking details.
 
-##### baby_sitter_registration
+##### BabySitterRegistration
 ```
 has_one_attached :upload_image
-
 belongs_to :user
 has_many :booking_detail
 ```
+* BabySitterRegistration model has_one_attached. This is allows the babysitter to upload one image of their own via AWS.
+* BabySitterRegistration model belongs to the user table because it gives extra information to that table.
+* BabySitterRegistration model has_many booking_details. Because user can make many bookings and each user has_one baby_sitter.
 
-
-##### booking_detail
+##### BookingDetail
 ```
 belongs_to :user
 belongs_to :baby_sitter_registration
 ```
-
+* BabySitterRegistration model belongs to the user table because it gives extra information to that table.
+* BookingDetail also belongs_to baby_sitter_registration because the baby_sitter_registration model gives information to the BookingDetail model. 
+  
 #### Discuss the database relations to be implemented in your application
-
+![erd](docs/erd.png)
 
 #### Provide your database schema design
 
@@ -158,6 +193,9 @@ These tables are implemented for us by AWS when we install their functionality, 
   These models are designed to store all the babysitter details .
 
 #### Describe the way tasks are allocated and tracked in your project
+![trello](docs/trello1.png)
+![trello](docs/trello2.png)
+![trello](docs/trello-final.png)
 
 
 
