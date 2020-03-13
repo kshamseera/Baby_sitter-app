@@ -32,6 +32,7 @@ end
     # edit the booking details
     def edit
         @babysitter_id = @booking.baby_sitter_registration.id
+        @baby_sitter_registration= @booking.baby_sitter_registration
       end
 
     def update
