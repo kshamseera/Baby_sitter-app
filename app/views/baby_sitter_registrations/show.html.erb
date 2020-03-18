@@ -11,7 +11,7 @@
 <p><strong>Amount/hr:</strong> <%= @baby_sitter.amount %></p><br>
 </div>
 <% if user_signed_in? && !current_user.is_baby_sitter %>
-<%= link_to "BOOK_NOW" , new_baby_sitter_registration_booking_detail_path({baby_sitter_registration_id: @baby_sitter.id}),class:"continue" %>
+<%= button_to "BOOK_NOW" , new_baby_sitter_registration_booking_detail_path({baby_sitter_registration_id: @baby_sitter.id}),method: :get,class:"continue" %>
 <%end %>
 </div>
 
