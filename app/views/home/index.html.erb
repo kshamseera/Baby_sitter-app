@@ -1,8 +1,8 @@
 <body id="heading"> 
 <div class ="search position">
 <%= form_tag listings_path, :method=>'get' do %>
- <%= text_field_tag :city ,"",placeholder: " Search by City ",class:"col-8",:required=>"true" %>
- <%= submit_tag "Search" ,class:"next"%>
+ <%= text_field_tag :city ,"",placeholder: " Search by City ",class:"col-8 input",:required=>"true" %>
+ <%= submit_tag "Search" ,class:"next submit"%>
 <%end %>
 </div>
 </body>
